@@ -286,8 +286,8 @@
 	--text-display-2   : calc(var(--text-display-1) * var(--text-scale-ratio));
 	--text-display-3   : calc(var(--text-display-2) * var(--text-scale-ratio));
 	--text-huge-1      : calc(var(--text-display-3) * var(--text-scale-ratio));
-	--text-huge-2      : calc(var(--text-huge-1) * var(--text-scale-ratio) * 0.5);
-	--text-huge-3      : calc(var(--text-huge-2) * var(--text-scale-ratio) * 0.5);
+	--text-huge-2      : calc(var(--text-huge-1) * var(--text-scale-ratio));
+	--text-huge-3      : calc(var(--text-huge-2) * var(--text-scale-ratio));
 
   /* default button height
    */
