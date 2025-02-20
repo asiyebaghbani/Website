@@ -4283,10 +4283,6 @@ td:last-child {
 	position  : relative;
 }
 
-.s-footer .social-list svg path,
-.s-footer .social-list svg {
-    fill: white !important;
-}
 
 .s-footer .link-list {
 	list-style : none;
