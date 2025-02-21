@@ -1,3 +1,50 @@
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const pages = document.querySelectorAll(".publication-page");
+    const paginationLinks = document.querySelectorAll(".pgn__num");
+    const prevButton = document.getElementById("prevPage");
+    const nextButton = document.getElementById("nextPage");
+
+    let currentPage = 1;
+
+    function showPage(pageNumber) {
+        pages.forEach((page, index) => {
+            page.style.display = (index + 1 === pageNumber) ? "block" : "none";
+        });
+
+        document.querySelectorAll(".pgn__num").forEach(link => link.classList.remove("current"));
+        document.querySelector(`.pgn__num[data-page="${pageNumber}"]`).classList.add("current");
+
+        currentPage = pageNumber;
+    }
+
+    paginationLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const pageNumber = parseInt(link.getAttribute("data-page"));
+            showPage(pageNumber);
+        });
+    });
+
+    prevButton.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (currentPage > 1) {
+            showPage(currentPage - 1);
+        }
+    });
+
+    nextButton.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (currentPage < pages.length) {
+            showPage(currentPage + 1);
+        }
+    });
+
+    // Show first page by default
+    showPage(1);
+});
+</script>
+
 <!DOCTYPE html>
 <html lang="en" class="no-js" >
 <head>
@@ -202,31 +249,110 @@
                     </div> <!-- end row -->
 
                     <!-- pagination -->
+                    <!-- pagination -->
                     <div class="row navigation pagination">
                         <div class="column xl-12">
                             <nav class="pgn">
                                 <ul>
                                     <li>
-                                        <a class="pgn__prev" href="#0">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12.707 17.293L8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"/></svg>
+                                        <a class="pgn__prev" href="#" id="prevPage">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                <path d="M12.707 17.293L8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"/>
+                                            </svg>
                                         </a>
                                     </li>
-                                    <li><span class="pgn__num current">1</span></li>  
-                                    <li><a class="pgn__num" href="services.html">2</a></li>
-                                    <li><a class="pgn__num" href="#0">3</a></li>
-                                    <li><a class="pgn__num" href="#0">4</a></li>
-                                    <li><a class="pgn__num" href="#0">5</a></li>
-                                    <li><span class="pgn__num dots">…</span></li>
-                                    <li><a class="pgn__num" href="#0">8</a></li>
+                                    <li><a class="pgn__num current" href="#" data-page="1">1</a></li>
+                                    <li><a class="pgn__num" href="#" data-page="2">2</a></li>
+                                    <li><a class="pgn__num" href="#" data-page="3">3</a></li>
                                     <li>
-                                        <a class="pgn__next" href="#0">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.293 17.293l1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"/></svg>
+                                        <a class="pgn__next" href="#" id="nextPage">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                <path d="M11.293 17.293l1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"/>
+                                            </svg>
                                         </a>
                                     </li>
                                 </ul>
                             </nav>
                         </div> <!-- end column -->
                     </div> <!-- end pagination -->
+
+                    <div class="publication-page" id="page-1">
+                        <!-- First set of publications -->
+                        <div class="grid-list-items__item blog-card">
+                            <h3 class="blog-card__title">
+                                <a href="https://ieeexplore.ieee.org/abstract/document/10077454">
+                                    Graph neural networks for intelligent transportation systems: A survey
+                                </a>
+                            </h3>
+                            <p>Published in IEEE Transactions ON Intelligent Transportation Systems, 2023.</p>
+                        </div>
+                    
+                        <div class="grid-list-items__item blog-card">
+                            <h3 class="blog-card__title">
+                                <a href="https://ieeexplore.ieee.org/abstract/document/10422353">
+                                    Multi-STGAC: A Graph Attention Based Model for Short-term Bus Passenger Flow Forecasting
+                                </a>
+                            </h3>
+                            <p>Published in 2023 IEEE 26th International Conference on Intelligent Transportation Systems (ITSC).</p>
+                        </div>
+                    
+                        <div class="grid-list-items__item blog-card">
+                            <h3 class="blog-card__title">
+                                <a href="https://journals.sagepub.com/doi/full/10.1177/03611981221112673">
+                                    Short-Term Passenger Flow Prediction Using a Bus Network Graph Convolutional Long Short-Term Memory Neural Network Model
+                                </a>
+                            </h3>
+                            <p>Published in Transportation Research Record.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="publication-page" id="page-2" style="display: none;">
+                        <!-- Second set of publications -->
+                        <div class="grid-list-items__item blog-card">
+                            <h3 class="blog-card__title">
+                                <a href="#">Another Paper 1</a>
+                            </h3>
+                            <p>Published in XYZ Journal, 2024.</p>
+                        </div>
+                    
+                        <div class="grid-list-items__item blog-card">
+                            <h3 class="blog-card__title">
+                                <a href="#">Another Paper 2</a>
+                            </h3>
+                            <p>Published in ABC Conference, 2024.</p>
+                        </div>
+                    
+                        <div class="grid-list-items__item blog-card">
+                            <h3 class="blog-card__title">
+                                <a href="#">Another Paper 3</a>
+                            </h3>
+                            <p>Published in AI Research Journal, 2024.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="publication-page" id="page-3" style="display: none;">
+                        <!-- Third set of publications -->
+                        <div class="grid-list-items__item blog-card">
+                            <h3 class="blog-card__title">
+                                <a href="#">Future Research Paper 1</a>
+                            </h3>
+                            <p>Coming Soon.</p>
+                        </div>
+                    
+                        <div class="grid-list-items__item blog-card">
+                            <h3 class="blog-card__title">
+                                <a href="#">Future Research Paper 2</a>
+                            </h3>
+                            <p>Coming Soon.</p>
+                        </div>
+                    
+                        <div class="grid-list-items__item blog-card">
+                            <h3 class="blog-card__title">
+                                <a href="#">Future Research Paper 3</a>
+                            </h3>
+                            <p>Coming Soon.</p>
+                        </div>
+                    </div>
 
                </section>
 
