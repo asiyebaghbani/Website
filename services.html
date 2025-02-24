@@ -1,3 +1,50 @@
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const pages = document.querySelectorAll(".publication-page");
+    const paginationLinks = document.querySelectorAll(".pgn__num");
+    const prevButton = document.getElementById("prevPage");
+    const nextButton = document.getElementById("nextPage");
+
+    let currentPage = 1;
+
+    function showPage(pageNumber) {
+        pages.forEach((page, index) => {
+            page.style.display = (index + 1 === pageNumber) ? "block" : "none";
+        });
+
+        document.querySelectorAll(".pgn__num").forEach(link => link.classList.remove("current"));
+        document.querySelector(`.pgn__num[data-page="${pageNumber}"]`).classList.add("current");
+
+        currentPage = pageNumber;
+    }
+
+    paginationLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const pageNumber = parseInt(link.getAttribute("data-page"));
+            showPage(pageNumber);
+        });
+    });
+
+    prevButton.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (currentPage > 1) {
+            showPage(currentPage - 1);
+        }
+    });
+
+    nextButton.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (currentPage < pages.length) {
+            showPage(currentPage + 1);
+        }
+    });
+
+    // Show first page by default
+    showPage(1);
+});
+</script>
+
 <!DOCTYPE html>
 <html lang="en" class="no-js" >
 <head>
@@ -6,7 +53,7 @@
     ================================================== -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Projects - Asiye</title>
+    <title>Publications - Asiye</title>
 
     <script>
         document.documentElement.classList.remove('no-js');
@@ -46,9 +93,10 @@
     ================================================== -->
     <div id="page" class="s-pagewrap">
 
-     <!-- # site header 
+        <!-- # site header 
         ================================================== -->
         <header class="s-header">
+
             <div class="row s-header__inner width-sixteen-col">
 
                 <div class="s-header__block">
@@ -64,20 +112,22 @@
                 <nav class="s-header__nav">
     
                     <ul class="s-header__menu-links">
-                        <li class="current"><a href="services.html">Projects</a></li>
-                        <li><a href="blog.html">Research Articles</a></li>
+                        <li><a href="services.html">Projects</a></li>
+                        <li class="current"><a href="blog.html">Research Articles</a></li>
                         <li><a href="about.html">Resume</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul> <!-- s-header__menu-links -->
 
                     <div class="s-header__contact">
                         <a href="contact.html" class="btn btn--primary s-header__contact-btn">Let's Work Together</a>                        
-                    </div> <!-- s-header__contact -->                    
+                    </div> <!-- s-header__contact -->
     
                 </nav> <!-- end s-header__nav -->
 
             </div> <!-- end s-header__inner -->
+
         </header> <!-- end s-header -->
+
 
         <!-- # site main content
         ================================================== -->
@@ -87,291 +137,287 @@
                     <div class="row">
                         <div class="column xl-12">
                             <h1 class="page-title">
-                                <span class="page-title__small-type text-pretitle">Services</span>
-                                High-Impact Services
+                                <span class="page-title__small-type text-pretitle">My Blog</span>
+                                Recent Publications 
                             </h1>
-                            
                         </div>
                     </div>
-               </section> <!-- pageheader -->  
+               </section>   
 
-               <section class="s-pagecontent pagecontent">
+                <section class="s-pagecontent pagecontent">
 
-                    <div class="row pageintro">
-                        <div class="column xl-6 lg-12">
-                            <h2 class="text-display-title">High-impact services to help your business</h2>
-                        </div>
-                        <div class="column xl-6 lg-12 u-flexitem-x-right">
-                            <p class="lead">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias eos quas blanditiis, quos sint nostrum fugit aperiam 
-                            inventore optio itaque molestias corporis, ipsa tenetur eligendi nihil iste porro, natus culpa consequuntur? Maxime, 
-                            corporis tempore. Sed tenetur veritatis velit recusandae eum, molestiae voluptate ducimus laudantium esse illo 
-                            doloribus atque eligendi deleniti iusto. 
-                            </p>
-                        </div>                       
-                    </div>  <!-- pageintro -->       
 
-                    <div class="row">
-                        <div class="column xl-12 grid-block">             
+                    <div class="row width-narrower pagemain">
+                        <div class="column xl-12"> 
+
+                            <h2>Research & Contributions (Updated: February 2025)</h2>
                             
-                            <div class="grid-full grid-list-items list-items show-ctr">
-                                
-                                <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header">
-                                        <h3 class="list-items__item-title">Digital Marketing</h3>
-                                    </div>
-                                    <div class="list-items__item-text">
-                                        <p>
-                                        Rerum quam quos. Aut asperiores 
-                                        sit mollitia. Rem neque et voluptatem eos quia sed eligendi et. Eaque velit eligendi ut 
-                                        magnam. Cumque ducimus laborum doloribus facere maxime vel earum quidem enim suscipit.
-                                        </p>
+                            <p>
+                            My work focuses on advancing AI through research in graph neural networks, deep learning, 
+                            and intelligent transportation systems. With multiple publications and growing citations, 
+                            I strive to push the boundaries of AI applications, contributing to both academia and industry. 
+                            Follow on Google Scholar:
 
-                                        <ul class="list-services">
-                                            <li>Cumque Ducimus</li>
-                                            <li>Maxime Vel</li>
-                                            <li>Eligendi Et</li>
-                                        </ul>
-                                    </div>
-                                </div> <!-- end list-items__item -->
-                                <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header">
-                                        <h3 class="list-items__item-title">Social Media Marketing</h3>
-                                    </div>
-                                    <div class="list-items__item-text">
-                                        <p>
-                                        Quibusdam quis autem voluptatibus earum vel ex error ea magni. Rerum quam quos. Aut asperiores 
-                                        sit mollitia. Rem neque et voluptatem eos quia sed eligendi et. Eaque velit eligendi ut 
-                                        magnam.
-                                        </p>
+                            <a href="https://scholar.google.com/citations?user=iSBLoZYAAAAJ&hl=en" target="_blank">
+                            <img src="images/icons/google-scholar.svg" alt="Google Scholar" width="25" height="25">
+                            </a>
+                            </p>
 
-                                        <ul class="list-services">
-                                            <li>Lorem Ipsum</li>
-                                            <li>voluptatibus Earum</li>
-                                            <li>Cumque Ducimus</li>
-                                        </ul>
-                                    </div>
-                                </div> <!-- end list-items__item -->
-                                <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header">
-                                        <h3 class="list-items__item-title">Content Marketing</h3>
-                                    </div>
-                                    <div class="list-items__item-text">
-                                        <p>
-                                        Rerum quam quos. Quibusdam quis autem voluptatibus earum vel ex error ea magni. Aut asperiores 
-                                        sit mollitia. Rem neque et voluptatem eos quia sed eligendi et. Eaque velit eligendi ut 
-                                        magnam.
-                                        </p>
+                            <div class="row pagemedia" href="https://scholar.google.com/citations?user=iSBLoZYAAAAJ&hl=en">
+                                <d class="column xl-12">
+                                    <figure class="page-media">                                
+                                        <img src="images/Google-scholar.png" 
+                                             srcset="images/Google-scholar.png 800w, 
+                                                     images/Google-scholar.png 1200w, 
+                                                     images/Google-scholar.png 600w" sizes="(max-width: 2400px) 100vw, 2400px" alt="">
+                                    </figure>
+                                </d>
+                            </div>
+                        </div> <!-- end grid-block-->
+                    </div> <!-- end pagemain -->
 
-                                        <ul class="list-services">
-                                            <li>Eaque velit</li>
-                                            <li>Asperiores</li>
-                                            <li>Cumque Ducimus</li>
-                                        </ul>
-                                    </div>
-                                </div> <!-- end list-items__item -->
-                                <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header">
-                                        <h3 class="list-items__item-title">Paid Advertising</h3>
-                                    </div>
-                                    <div class="list-items__item-text">
-                                        <p>
-                                        Eaque velit eligendi ut magnam.Rerum quam quos. Aut asperiores 
-                                        sit mollitia. Rem neque et voluptatem eos quia sed eligendi et. 
-                                        Cumque ducimus laborum doloribus facere maxime vel earum quidem enim suscipit.
-                                        </p>
+                    <!-- pagination -->
+                    
+                    <div class="publication-page" id="page-1">
+                        <div class="row">
+                        <div class="column xl-12 grid-block">          
+        
+                            <!-- <div class="grid-full">         -->
+                                <div class="grid-full grid-list-items">
 
-                                        <ul class="list-services">
-                                            <li>Cumque Ducimus</li>
-                                            <li>Maxime Vel</li>
-                                            <li>Eligendi Et</li>
-                                        </ul>
-                                    </div>
-                                </div> <!-- end list-items__item -->
-                                <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header">
-                                        <h3 class="list-items__item-title">Search Engine Optimization</h3>
-                                    </div>
-                                    <div class="list-items__item-text">
-                                        <p>
-                                        Aut asperiores sit mollitia. Rem neque et voluptatem eos quia sed eligendi et. Eaque velit eligendi ut 
-                                        magnam. Cumque ducimus laborum doloribus facere maxime vel earum quidem enim suscipit.
-                                        </p>
-
-                                        <ul class="list-services">
-                                            <li>Cumque Ducimus</li>
-                                            <li>Maxime Vel</li>
-                                            <li>Eligendi Et</li>
-                                        </ul>
-                                    </div>
-                                </div> <!-- end list-items__item -->
-                                <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header">
-                                        <h3 class="list-items__item-title">Advance Analytics</h3>
-                                    </div>
-                                    <div class="list-items__item-text">
-                                        <p>
-                                        Quibusdam quis autem voluptatibus earum vel ex error ea magni. Rerum quam quos. Aut asperiores 
-                                        sit mollitia. Rem neque et voluptatem eos quia sed eligendi et. Eaque velit eligendi ut 
-                                        magnam.
-                                        </p>
-
-                                        <ul class="list-services">
-                                            <li>Lorem Ipsum</li>
-                                            <li>Voluptatibus Earum</li>
-                                            <li>Cumque Ducimus</li>
-                                        </ul>
-                                    </div>
-                                </div> <!-- end list-items__item -->
-                                <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header">
-                                        <h3 class="list-items__item-title">Email Marketing</h3>
-                                    </div>
-                                    <div class="list-items__item-text">
-                                        <p>
-                                        Rerum quam quos. Aut asperiores 
-                                        sit mollitia. Rem neque et voluptatem eos quia sed eligendi et. Eaque velit eligendi ut 
-                                        magnam. Cumque ducimus laborum doloribus facere maxime vel earum quidem enim suscipit.
-                                        </p>
-
-                                        <ul class="list-services">
-                                            <li>Doloribus</li>
-                                            <li>Mollitia</li>
-                                            <li>Eligendi Et</li>
-                                        </ul>
-                                    </div>
-                                </div> <!-- end list-items__item -->
-                                <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header">
-                                        <h3 class="list-items__item-title">Conversion Rate Optimization</h3>
-                                    </div>
-                                    <div class="list-items__item-text">
-                                        <p>
-                                        Quibusdam quis autem voluptatibus earum vel ex error ea magni. Rerum quam quos. Aut asperiores 
-                                        sit mollitia. Rem neque et voluptatem eos quia sed eligendi et. Eaque velit eligendi ut 
-                                        magnam.
-                                        </p>
-
-                                        <ul class="list-services">
-                                            <li>Cumque Ducimus</li>
-                                            <li>Maxime Vel</li>
-                                            <li>Eligendi Et</li>
-                                        </ul>
-                                    </div>
-                                </div> <!-- end list-items__item -->
-                                <div class="grid-list-items__item list-items__item">
-                                    <div class="list-items__item-header">
-                                        <h3 class="list-items__item-title">Web Design</h3>
-                                    </div>
-                                    <div class="list-items__item-text">
-                                        <p>
-                                        Aut asperiores sit mollitia. Rem neque et voluptatem eos quia sed eligendi et. Eaque velit eligendi ut 
-                                        magnam. Cumque ducimus laborum doloribus facere maxime vel earum quidem enim suscipit.
-                                        </p>
-
-                                        <ul class="list-services">
-                                            <li>Suscipit</li>
-                                            <li>Voluptatem</li>
-                                            <li>Eligendi Et</li>
-                                        </ul>
-                                    </div>
-                                </div> <!-- end list-items__item -->
-    
-                            </div> <!-- grid-list-items -->
-                           
+                                    <div class="grid-list-items__item blog-card">
+                                        <div class="blog-card__header">
+                                            <div class="blog-card__cat-links">
+                                                <a href="https://ieeexplore.ieee.org/abstract/document/10077454">Journal Paper</a> <!-- Update category dynamically -->
+                                            </div>
+                                            <h3 class="blog-card__title">
+                                                <a href="https://ieeexplore.ieee.org/abstract/document/10077454">Graph neural networks for intelligent transportation systems: A survey</a>
+                                            </h3>
+                                        </div>
+                                        <div class="blog-card__text">
+                                            <p>
+                                                Published in IEEE Transactions ON Intelligent Transportation Systems, 2023.<br>
+                                                In this survey, we provide an overview of GNN studies in the general domain of ITS. We explore how GNN
+                                                frameworks have evolved for different ITS applications, including
+                                                traffic forecasting, demand prediction, autonomous vehicles,
+                                                intersection management, parking management, urban planning,
+                                                and transportation safety.
+                                                <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10077454">Read More</a>
+                                            </p>
+                                        </div>
+                                    </div> <!-- end blog-card -->
+                                    <div class="grid-list-items__item blog-card">
+                                        <div class="blog-card__header">
+                                            <div class="blog-card__cat-links">
+                                                <a href="https://ieeexplore.ieee.org/abstract/document/10422353">Conference Paper</a> <!-- Update category dynamically -->
+                                            </div>
+                                            <h3 class="blog-card__title">
+                                                <a href="https://ieeexplore.ieee.org/abstract/document/10422353">Multi-STGAC: A Graph Attention Based Model for Short-term Bus Passenger Flow Forecasting</a>
+                                            </h3>
+                                        </div>
+                                        <div class="blog-card__text">
+                                            <p>
+                                                Published in 2023 IEEE 26th International Conference on Intelligent Transportation Systems (ITSC).<br>
+                                                In this study, we propose Multi-Component Spatial Temporal Graph Attention Convolution Neural Network (Multi-STGAC), a graph deep learning model to predict short-term bus passenger flow. It incorporates a Graph Attention Network and a Graph Convolution Neural Network to consider spatial correlations in bus network data.
+                                                <a href="https://ieeexplore.ieee.org/abstract/document/10422353">Read More</a>
+                                            </p>
+                                        </div>
+                                    </div> <!-- end blog-card -->
+                                    
+                                    <div class="grid-list-items__item blog-card">
+                                        <div class="blog-card__header">
+                                            <div class="blog-card__cat-links">
+                                                <a href="https://journals.sagepub.com/doi/full/10.1177/03611981221112673">Journal Paper</a> <!-- Update category dynamically -->
+                                            </div>
+                                            <h3 class="blog-card__title">
+                                                <a href="https://journals.sagepub.com/doi/full/10.1177/03611981221112673">Short-Term Passenger Flow Prediction Using a Bus Network Graph Convolutional Long Short-Term Memory Neural Network Model</a>
+                                            </h3>
+                                        </div>
+                                        <div class="blog-card__text">
+                                            <p>
+                                                Published in Transportation Research Record: Journal of the Transportation Research Board.<br>
+                                                This paper develops a bus network graph convolutional long short-term memory (BNG-ConvLSTM) neural network model to forecast short-term passenger flows in bus networks.
+                                                <a href="https://journals.sagepub.com/doi/epub/10.1177/03611981221112673">Read More</a>
+                                            </p>
+                                        </div>
+                                    </div> <!-- end blog-card -->
+                                    
+        
+                                </div> <!-- grid-list-items -->
+                            <!-- </div>     -->
 
                         </div> <!-- end grid-block-->
                     </div> <!-- end row -->
 
-               </section> <!-- pagecontent -->
-
-               <section class="s-testimonials">
-
-                    <div class="s-testimonials__header row row-x-center text-center">
-                        <div class="column xl-8 lg-12">
+                    </div>
+                    
+                    <div class="publication-page" id="page-2" style="display: none;">
+                        <!-- Second set of publications -->
+                        <div class="row">
+                        <div class="column xl-12 grid-block">          
         
-                            <p class="text-pretitle">
-                            Testimonials
-                            </p>
-                            <h3>
-                            Reviews From Real Clients
-                            </h3>                        
+                            <!-- <div class="grid-full">         -->
+                                <div class="grid-full grid-list-items">
+
+                                    <div class="grid-list-items__item blog-card">
+                                        <div class="blog-card__header">
+                                            <div class="blog-card__cat-links">
+                                                <a href="https://ieeexplore.ieee.org/abstract/document/10422701">Conference Paper</a> <!-- Update category dynamically -->
+                                            </div>
+                                            <h3 class="blog-card__title">
+                                                <a href="https://ieeexplore.ieee.org/abstract/document/10422701">Predicting Passenger Flow Using Graph Neural Networks with Scheduled Sampling on Bus Networks</a>
+                                            </h3>
+                                        </div>
+                                        <div class="blog-card__text">
+                                            <p>
+                                                Published in 2023 IEEE 26th International Conference on Intelligent Transportation Systems (ITSC).<br>
+                                                In this study, we propose the Multi-step Multi-component Graph Convolutional Long Short-Term Memory (Multi-GCN-LSTM) model,
+                                                which uses 1) a proximity matrix in addition to an adjacency matrix to consider the effects of vehicular
+                                                traffic and link-level distances; 2) Scheduled Sampling for multi-step prediction, which prevents error
+                                                propagation across prediction steps; and 3) a novel fusion mechanism for considering time-varying spatial
+                                                <a href="https://ieeexplore.ieee.org/abstract/document/10422701">Read More</a>
+                                            </p>
+                                        </div>
+                                    </div> <!-- end blog-card -->
+                                    <div class="grid-list-items__item blog-card">
+                                        <div class="blog-card__header">
+                                            <div class="blog-card__cat-links">
+                                                <a href="#">Future Journal Paper</a> <!-- Update category dynamically -->
+                                            </div>
+                                            <h3 class="blog-card__title">
+                                                <a href="#">TMS-GNN: Traffic- Aware Multi-Step Graph Neural Network for Bus Passenger Flow Prediction</a>
+                                            </h3>
+                                        </div>
+                                        <div class="blog-card__text">
+                                            <p>
+                                                Coming Soon. <br>
+                                                Under revision the journal of ransportation Research Part C: Emerging Technologies</p>
+                                        </div>
+                                    </div> <!-- end blog-card -->
+                                    
+                                    <div class="grid-list-items__item blog-card">
+                                        <div class="blog-card__header">
+                                            <div class="blog-card__cat-links">
+                                                <a href="#">Future Journal Paper</a> <!-- Update category dynamically -->
+                                            </div>
+                                            <h3 class="blog-card__title">
+                                                <a href="#">Dynamic Nodes in Spatial-Temporal Graph Neural Networks: Considering Bus Schedules in Passenger Flow Prediction</a>
+                                            </h3>
+                                        </div>
+                                        <div class="blog-card__text">
+                                            <p>
+                                                Coming Soon. <br>
+                                                Under revision the journal of IEEE Transactions on Intelligent Transportation Systems.
+                                            </p>
+                                        </div>
+                                    </div> <!-- end blog-card -->
+                                    
         
-                        </div>
-                    </div> <!--end s-testimonials__header -->
+                                </div> <!-- grid-list-items -->
+                            <!-- </div>     -->
 
-                    <div class="row s-testimonials__content">
-                        <div class="column xl-12 testimonials">
+                        </div> <!-- end grid-block-->
+                    </div> <!-- end row -->
+                    </div>
 
-                            <div class="swiper-container testimonials__slider page-slider">
+                    <div class="publication-page" id="page-3" style="display: none;">
+                        <!-- Second set of publications -->
+                        <div class="row">
+                        <div class="column xl-12 grid-block">          
+        
+                            <!-- <div class="grid-full">         -->
+                                <div class="grid-full grid-list-items">
 
-                                <div class="swiper-wrapper">
-                                    <div class="testimonials__slide swiper-slide">
-                                        <p>
-                                        Molestiae incidunt consequatur quis ipsa autem nam sit enim magni. Voluptas tempore rem. 
-                                        Explicabo a quaerat sint autem dolore ducimus ut consequatur neque. Nisi dolores quaerat fuga rem nihil nostrum.
-                                        Laudantium quia consequatur molestias.
-                                        </p>
-                                        <div class="testimonials__author">
-                                            <img src="images/avatars/user-01.jpg" alt="Author image" class="testimonials__avatar">
-                                            <cite class="testimonials__cite">
-                                                <strong>John Rockefeller</strong>
-                                                <span>Standard Oil Co.</span>
-                                            </cite>
+                                    
+                                    <div class="grid-list-items__item blog-card">
+                                        <div class="blog-card__header">
+                                            <div class="blog-card__cat-links">
+                                                <a href="#">Future Journal Paper</a> <!-- Update category dynamically -->
+                                            </div>
+                                            <h3 class="blog-card__title">
+                                                <a href="#">Reinforcement Learning-Driven Transfer Learning in Spatial-Temporal Graph Neural Networks</a>
+                                            </h3>
                                         </div>
-                                    </div>
-                                    <div class="testimonials__slide swiper-slide">
-                                        <p>
-                                        Voluptas tempore rem. Molestiae incidunt consequatur quis ipsa autem nam sit enim magni. 
-                                        Explicabo a quaerat sint autem dolore ducimus ut consequatur neque. Nisi dolores quaerat fuga rem nihil nostrum.
-                                        Laudantium quia consequatur molestias.
-                                        </p>
-                                        <div class="testimonials__author">
-                                            <img src="images/avatars/user-04.jpg" alt="Author image" class="testimonials__avatar">
-                                            <cite class="testimonials__cite">
-                                                <strong>Andrew Carnegie</strong>
-                                                <span>Carnegie Steel Co.</span>
-                                            </cite>
+                                        <div class="blog-card__text">
+                                            <p>
+                                                Coming Soon. <br>
+                                                Under revision the journal of IEEE Transactions on Intelligent Transportation Systems.
+                                            </p>
                                         </div>
-                                    </div>
-                                    <div class="testimonials__slide swiper-slide">
-                                        <p>
-                                        Nisi dolores quaerat fuga rem nihil nostrum. Molestiae incidunt consequatur quis ipsa autem nam sit enim magni. 
-                                        Voluptas tempore rem. Explicabo a quaerat sint autem dolore ducimus ut consequatur neque. 
-                                        Laudantium quia consequatur molestias.
-                                        </p>
-                                        <div class="testimonials__author">
-                                            <img src="images/avatars/user-06.jpg" alt="Author image" class="testimonials__avatar">
-                                            <cite class="testimonials__cite">
-                                                <strong>Henry Ford</strong>
-                                                <span>Ford Motor Co.</span>
-                                            </cite>
+                                    </div> <!-- end blog-card -->
+
+                                    <div class="grid-list-items__item blog-card">
+                                        <div class="blog-card__header">
+                                            <div class="blog-card__cat-links">
+                                                <a href="#">Future Journal Paper</a> <!-- Update category dynamically -->
+                                            </div>
+                                            <h3 class="blog-card__title">
+                                                <a href="#">Explainabilty in Spatial-Temporal Graph Neural Networks; What is Inside the Model?</a>
+                                            </h3>
                                         </div>
-                                    </div>
-                                    <div class="testimonials__slide swiper-slide">
-                                        <p>
-                                        Molestiae incidunt consequatur quis ipsa autem nam sit enim magni. Voluptas tempore rem. 
-                                        Explicabo a quaerat sint autem dolore ducimus ut consequatur neque. Nisi dolores quaerat fuga rem nihil nostrum.
-                                        Laudantium quia consequatur molestias.
-                                        </p>
-                                        <div class="testimonials__author">
-                                            <img src="images/avatars/user-02.jpg" alt="Author image" class="testimonials__avatar">
-                                            <cite class="testimonials__cite">
-                                                <strong>John Morgan</strong>
-                                                <span>JP Morgan & Co.</span>
-                                            </cite>
+                                        <div class="blog-card__text">
+                                            <p>
+                                                Coming Soon. <br>
+                                            </p>
                                         </div>
-                                    </div> 
-                                </div> <!-- end swiper-wrapper --> 
+                                    </div> <!-- end blog-card -->
 
-                                <div class="swiper-pagination"></div>
+                                    <div class="grid-list-items__item blog-card">
+                                        <div class="blog-card__header">
+                                            <div class="blog-card__cat-links">
+                                                <a href="#">Future Journal Paper</a> <!-- Update category dynamically -->
+                                            </div>
+                                            <h3 class="blog-card__title">
+                                                <a href="#">Federated Learning with Spatial-Temporal Graph Neural Networks: Have a Secure Deep Learning Model!</a>
+                                            </h3>
+                                        </div>
+                                        <div class="blog-card__text">
+                                            <p>
+                                                Coming Soon. <br>
+                                            </p>
+                                        </div>
+                                    </div> <!-- end blog-card -->
+                                    
+        
+                                </div> <!-- grid-list-items -->
+                            <!-- </div>     -->
 
-                            </div> <!--end testimonials__slider --> 
+                        </div> <!-- end grid-block-->
+                    </div> <!-- end row -->
+                    </div>
+                    
+                        
+                    </div>
 
-                        </div> <!-- testimonials -->
-                    </div> <!--end s-testimonials__content -->
+                    
+                    <!-- pagination -->
+                    <div class="row navigation pagination">
+                        <div class="column xl-12">
+                            <nav class="pgn">
+                                <ul>
+                                    <li>
+                                        <a class="pgn__prev" href="#" id="prevPage">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                <path d="M12.707 17.293L8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"/>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li><a class="pgn__num current" href="#" data-page="1">1</a></li>
+                                    <li><a class="pgn__num" href="#" data-page="2">2</a></li>
+                                    <li><a class="pgn__num" href="#" data-page="3">3</a></li>
+                                    <li>
+                                        <a class="pgn__next" href="#" id="nextPage">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                <path d="M11.293 17.293l1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"/>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div> <!-- end column -->
+                    </div> <!-- end pagination -->
 
-               </section> <!-- end s-testimonials -->
+               </section>
 
         </section> <!-- s-content-->
 
@@ -384,10 +430,10 @@
 
                     <div class="s-cta__content">
                         <h2 class="text-display-title">
-                        Get started with a consultation today.
+                        Get Started with AI Innovation Today
                         </h2>
                         <p class="lead">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis rem, esse doloribus sint eaque at debitis enim vitae minus expedita ratione dignissimos sit nostrum optio sequi. Ipsa at beatae quam.
+                        Let’s push the boundaries of AI together. Whether it’s a project, research, or consulting—let’s connect.
                         </p>
                         <a href="contact.html" class="btn btn--primary">Let's Work Together</a>
                     </div>
@@ -398,7 +444,7 @@
         </section> <!-- end s-cta -->
 
 
-       <!-- # footer 
+        <!-- # footer 
         ================================================== -->
         <footer class="s-footer">
             <div class="row s-footer__content">
