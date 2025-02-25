@@ -4769,3 +4769,15 @@ td:last-child {
 .read-more:hover {
     text-decoration: underline;
 }
+
+	.project-image-container {
+    text-align: center; /* Centers image and caption */
+    margin: 20px 0;
+}
+
+.project-caption {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+    text-align: center;
+}
